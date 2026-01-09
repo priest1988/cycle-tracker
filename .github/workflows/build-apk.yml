@@ -31,23 +31,3 @@ jobs:
       with:
         name: cycle-tracker-apk
         path: bin/*.apk
-```
-
-5. `Ctrl+S` - сохранить
-
----
-
-## Шаг 4: Создайте файл .gitignore
-
-1. **Правой кнопкой** на `pythonProject1`
-2. `New` → `File`
-3. Назовите: `.gitignore`
-4. Вставьте:
-```
-.buildozer/
-bin/
-__pycache__/
-*.pyc
-.idea/
-*.log
-.DS_Store
