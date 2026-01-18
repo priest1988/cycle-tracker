@@ -1,7 +1,7 @@
 [app]
-title = Cycle Tracker
-package.name = cycletracker
-package.domain = org.cycletracker
+title = Pregnancy Calculator by Sergey Timoshchenko
+package.name = pregnancycalculator
+package.domain = com.sergey.timoshchenko
 source.dir = .
 source.include_exts = py,png,jpg,kv,atlas
 version = 1.0
