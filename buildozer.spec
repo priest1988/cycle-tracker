@@ -4,9 +4,9 @@ package.name = pregnancycalculator
 package.domain = com.sergey.timoshchenko
 source.dir = .
 source.include_exts = py,png,jpg,kv,atlas,ttf
-version = 1.2
+version = 1.3
 icon.filename = icon.png
-requirements = python3==3.9.17,kivy==2.2.1
+requirements = python3,kivy
 orientation = portrait
 fullscreen = 0
 
