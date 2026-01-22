@@ -6,19 +6,23 @@ from kivy.uix.button import Button
 from kivy.uix.textinput import TextInput
 from kivy.uix.popup import Popup
 from kivy.uix.scrollview import ScrollView
+from kivy.core.text import LabelBase
+
+# Регистрация шрифта Bad Script
+LabelBase.register(name='BadScript', fn_regular='BadScript-Regular.ttf')
 
 
 class CycleTrackerApp(App):
     def build(self):
         self.layout = BoxLayout(orientation='vertical', padding=10, spacing=10)
 
-        # Добавляем заголовок приложения
+        # Заголовок с золотым цветом и шрифтом Bad Script
         title_label = Label(
-            text='Pregnancy Calculator\nby Sergey Timoshchenko',
-            size_hint_y=0.15,
-            font_size='18sp',
-            bold=True,
-            color=(0.2, 0.6, 0.9, 1)
+            text='Pregnancy Calculator\nby Sergei Timoshchenko',
+            size_hint_y=0.4,
+            font_size='14sp',
+            font_name='BadScript',
+            color=(1.0, 0.84, 0.0, 1),  # Золотой цвет (Gold)
         )
         self.layout.add_widget(title_label)
 
@@ -89,7 +93,6 @@ class CycleTrackerApp(App):
     def calculate_cycle_dates(self, start_date, cycle_length):
         dates = {}
 
-        # Расчет для первых 4 циклов (без "нулевого")
         for i in range(1, 5):
             if i == 1:
                 cycle_start = start_date
@@ -106,17 +109,14 @@ class CycleTrackerApp(App):
         result_text = "Ключевые даты вашего менструального цикла:\n"
         result_text += "Key dates in your menstrual cycle:\n\n"
 
-        # Русские и английские названия месяцев
         months_ru = ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня',
                      'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря']
         months_en = ['January', 'February', 'March', 'April', 'May', 'June',
                      'July', 'August', 'September', 'October', 'November', 'December']
 
-        # Выводим по циклам
         for i in range(1, 5):
             result_text += f"═══ Цикл {i} / Cycle {i} ═══\n\n"
 
-            # Начало цикла
             start_key = f'Начало цикла {i}/Beginning of cycle {i}'
             if start_key in cycle_dates:
                 date = cycle_dates[start_key]
@@ -125,7 +125,6 @@ class CycleTrackerApp(App):
                 result_text += f"Начало цикла {i}: {date.day} {month_ru} {date.year}\n"
                 result_text += f"Beginning of cycle {i}: {date.day} {month_en} {date.year}\n\n"
 
-            # Конец цикла
             end_key = f'Конец цикла {i}/End of cycle {i}'
             if end_key in cycle_dates:
                 date = cycle_dates[end_key]
@@ -134,7 +133,6 @@ class CycleTrackerApp(App):
                 result_text += f"Конец цикла {i}: {date.day} {month_ru} {date.year}\n"
                 result_text += f"End of cycle {i}: {date.day} {month_en} {date.year}\n\n"
 
-            # Овуляция
             ovulation_key = f'Овуляция {i}/Ovulation {i}'
             if ovulation_key in cycle_dates:
                 date = cycle_dates[ovulation_key]
@@ -143,7 +141,6 @@ class CycleTrackerApp(App):
                 result_text += f"Овуляция {i}: {date.day} {month_ru} {date.year}\n"
                 result_text += f"Ovulation {i}: {date.day} {month_en} {date.year}\n\n"
 
-        # Рекомендации по зачатию
         suggestions = self.suggest_conception_dates(cycle_dates)
         result_text += "═══════════════════════════════\n"
         result_text += "Рекомендации по занятиям любовью с целью зачатия:\n"
@@ -220,7 +217,7 @@ class CycleTrackerApp(App):
         popup_layout.add_widget(close_button)
 
         popup = Popup(
-            title="Pregnancy Calculator by Sergey Timoshchenko",
+            title="Pregnancy Calculator by Sergei Timoshchenko",
             content=popup_layout,
             size_hint=(0.8, 0.8)
         )
