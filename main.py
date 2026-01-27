@@ -27,13 +27,11 @@ class CycleTrackerApp(App):
         self.layout.add_widget(title_label)
 
         self.start_date_input = TextInput(
-            hint_text='Введите дату начала (ДД.ММ.ГГГГ или "сегодня")\n'
-                      'Enter start date (DD.MM.YYYY or "today")',
+            hint_text='Введите дату начала\n(ДД.ММ.ГГГГ или "сегодня")\n\nEnter start date\n(DD.MM.YYYY or "today")',
             multiline=False
         )
         self.cycle_length_input = TextInput(
-            hint_text='Введите длину цикла (по умолчанию 28)\n'
-                      'Enter the cycle length (default 28)',
+            hint_text='Введите длину цикла\n(по умолчанию 28)\n\nEnter the cycle length\n(default 28)',
             multiline=False
         )
         self.calculate_button = Button(text='Рассчитать/Calculate', on_press=self.calculate_cycle)
