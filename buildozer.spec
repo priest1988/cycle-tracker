@@ -1,4 +1,5 @@
 [app]
+
 title = Pregnancy Calculator by Sergei Timoshchenko
 package.name = pregnancycalculator
 package.domain = com.sergey.timoshchenko
@@ -20,3 +21,9 @@ android.enable_androidx = True
 [buildozer]
 log_level = 2
 warn_on_root = 1
+# ДОБАВЬТЕ ЭТИ СТРОКИ:
+android.release_artifact = apk
+android.accept_sdk_license = True
+
+# Автоматическая подпись
+android.sign = True
