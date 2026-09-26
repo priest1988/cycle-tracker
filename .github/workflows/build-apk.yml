@@ -1,6 +1,4 @@
 
-
-
 name: Build Android APK
 
 on:
@@ -17,7 +15,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Build with Buildozer
-        uses: ArtemGovorov/buildozer-action@v1
+        uses: artemgovorov/buildozer-action@v1
         with:
           workdir: .
           buildozer_version: stable
@@ -27,6 +25,20 @@ jobs:
         with:
           name: cycle-tracker-apk
           path: bin/*.apk
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
