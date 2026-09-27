@@ -25,9 +25,9 @@ fullscreen = 0
 # ВАЖНО: НЕ ДОБАВЛЯЙТЕ INTERNET - приложение работает офлайн!
 # android.permissions = 
 # (int) Target Android API, should be as high as possible.
-android.api = 33
+
 # (int) Minimum API your APK will support.
-android.minapi = 21
+
 # (str) Android NDK version to use
 android.ndk = 25b
 # (bool) If True, then skip trying to update the Android sdk
@@ -38,7 +38,7 @@ android.skip_update = False
 # agreements. This is intended for automation only. If set to False,
 # the default, you will be shown the license when first running
 # buildozer.
-android.accept_sdk_license = True
+
 # (str) Android entry point, default is ok for Kivy-based app
 #android.entrypoint = org.kivy.android.PythonActivity
 # (str) Full name including package path of the Java class that implements Android Activity
@@ -80,7 +80,7 @@ android.debug_artifact = apk
 # android.backup_rules =
 # (str) If True, then skip trying to update the Android sdk
 # android.skip_update = False
-android.accept_sdk_license = True
+
 # (str) Android app theme, default is ok for Kivy-based app
 # android.apptheme = "@android:style/Theme.NoTitleBar"
 # (list) Pattern to whitelist for the whole project
@@ -231,3 +231,8 @@ warn_on_root = 1
 # build_dir = ./.buildozer
 # (str) Path to build output (i.e. .apk, .aab, .ipa) storage
 # bin_dir = ./bin
+android.accept_sdk_license = True
+android.api = 33
+android.minapi = 21
+android.ndk = 25b
+android.build_tools_version = 33.0.0
