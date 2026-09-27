@@ -27,20 +27,34 @@ jobs:
       - name: Install dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y git zip unzip libffi-dev libssl-dev autoconf libtool pkg-config zlib1g-dev libncurses5-dev libncursesw5-dev libtinfo5 cmake python3-pip
+          sudo apt-get install -y git zip unzip libffi-dev libssl-dev autoconf libtool pkg-config zlib1g-dev libncurses5-dev libncursesw5-dev libtinfo5 cmake python3-pip wget
           python3 -m pip install --upgrade pip
           pip install --user --upgrade buildozer cython virtualenv
 
-      - name: Auto Accept Licenses and Build
+      - name: Pre-install Android SDK Tools
+        run: |
+          # Создаем структуру папок для Android SDK
+          mkdir -p ~/.buildozer/android/platform/android-sdk/cmdline-tools
+          cd ~/.buildozer/android/platform/android-sdk/cmdline-tools
+
+          # Скачиваем официальные commandlinetools от Google
+          wget https://google.com -O tools.zip
+          unzip tools.zip
+          rm tools.zip
+
+          # Корректируем структуру папок, как того требует Google
+          mv cmdline-tools latest
+          mkdir cmdline-tools
+          mv latest cmdline-tools/
+
+          # Принудительно принимаем абсолютно все лицензии Google
+          mkdir -p ../licenses
+          echo -e "\n24333f1a63b6b82d3190e0c4d7b4c4b4a2e3a074\n288278f63972683d9753b390fa4d234a4b248042" > ../licenses/android-sdk-license
+          echo -e "\n84831b9409646a918e30573bab4c9c91346d8abd" > ../licenses/android-sdk-preview-license
+
+      - name: Build with Buildozer
         run: |
           export PATH=$PATH:~/.local/bin
-
-          # Предварительно создаем папки и принудительно одобряем лицензии Google
-          mkdir -p ~/.buildozer/android/platform/android-sdk/licenses
-          echo -e "\n24333f1a63b6b82d3190e0c4d7b4c4b4a2e3a074\n288278f63972683d9753b390fa4d234a4b248042" > ~/.buildozer/android/platform/android-sdk/licenses/android-sdk-license
-          echo -e "\n84831b9409646a918e30573bab4c9c91346d8abd" > ~/.buildozer/android/platform/android-sdk/licenses/android-sdk-preview-license
-
-          # Запуск сборки с автоответом "да" на любые всплывающие вопросы
           yes | buildozer android debug
 
       - name: Upload APK
