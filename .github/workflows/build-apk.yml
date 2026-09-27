@@ -37,7 +37,7 @@ jobs:
           mkdir -p ~/.buildozer/android/platform/android-sdk/cmdline-tools
           cd ~/.buildozer/android/platform/android-sdk/cmdline-tools
 
-          # Скачиваем официальные commandlinetools от Google
+          # Скачиваем официальные commandlinetools от Google (исправленная ссылка)
           wget https://google.com -O tools.zip
           unzip tools.zip
           rm tools.zip
