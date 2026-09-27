@@ -31,13 +31,21 @@ jobs:
           python3 -m pip install --upgrade pip
           pip install --user --upgrade buildozer cython virtualenv
 
-      - name: Build with Buildozer
+      - name: Auto Accept Licenses and Build
         run: |
           export PATH=$PATH:~/.local/bin
-          buildozer android debug
+
+          # Предварительно создаем папки и принудительно одобряем лицензии Google
+          mkdir -p ~/.buildozer/android/platform/android-sdk/licenses
+          echo -e "\n24333f1a63b6b82d3190e0c4d7b4c4b4a2e3a074\n288278f63972683d9753b390fa4d234a4b248042" > ~/.buildozer/android/platform/android-sdk/licenses/android-sdk-license
+          echo -e "\n84831b9409646a918e30573bab4c9c91346d8abd" > ~/.buildozer/android/platform/android-sdk/licenses/android-sdk-preview-license
+
+          # Запуск сборки с автоответом "да" на любые всплывающие вопросы
+          yes | buildozer android debug
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
           name: cycle-tracker-apk
           path: bin/*.apk
+
