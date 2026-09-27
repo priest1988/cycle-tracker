@@ -25,7 +25,7 @@ fullscreen = 0
 # ВАЖНО: НЕ ДОБАВЛЯЙТЕ INTERNET - приложение работает офлайн!
 # android.permissions = 
 # (int) Target Android API, should be as high as possible.
-android.api = 31
+android.api = 33
 # (int) Minimum API your APK will support.
 android.minapi = 21
 # (str) Android NDK version to use
@@ -80,7 +80,7 @@ android.debug_artifact = apk
 # android.backup_rules =
 # (str) If True, then skip trying to update the Android sdk
 # android.skip_update = False
-# android.accept_sdk_license = False
+android.accept_sdk_license = True
 # (str) Android app theme, default is ok for Kivy-based app
 # android.apptheme = "@android:style/Theme.NoTitleBar"
 # (list) Pattern to whitelist for the whole project
