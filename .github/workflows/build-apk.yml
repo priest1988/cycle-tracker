@@ -1,6 +1,4 @@
 
-
-
 name: Build Android APK
 
 on:
@@ -37,6 +35,8 @@ jobs:
       - name: Build with Buildozer
         run: |
           export PATH=$PATH:~/.local/bin
+          mkdir -p ~/.buildozer/android/platform/android-sdk/licenses
+          echo -e "\n24333f1a63b6b82d3190e0c4d7b4c4b4a2e3a074" > ~/.buildozer/android/platform/android-sdk/licenses/android-sdk-license
           yes | buildozer android debug
 
       - name: Upload APK
@@ -44,13 +44,6 @@ jobs:
         with:
           name: cycle-tracker-apk
           path: bin/*.apk
-
-
-
-
-
-
-
 
 
 
